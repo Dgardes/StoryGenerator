@@ -10,12 +10,5 @@ export interface Story {
 
 export interface CreateStoryDto {
   title: string;
-  character: {
-    name: string;
-    age: number;
-    gender: string;
-    setting: string;
-    role: string;
-    description?: string;
-  };
+  characterId: string;
 }

@@ -1,0 +1,41 @@
+.stories {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stories h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 10px;
+}
+
+.separator {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #ffcc00, transparent);
+  margin-bottom: 30px;
+}
+
+.noStories {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 50px;
+  font-style: italic;
+}
+
+.flowLayoutPanel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  align-items: start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.flowLayoutPanel {
+  animation: fadeIn 0.5s ease-out;
+}

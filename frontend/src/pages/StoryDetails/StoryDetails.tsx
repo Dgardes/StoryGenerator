@@ -24,7 +24,7 @@ export default function TaskDetailPage({ stories, onUpdate, onDelete } : StoryDe
     return (
         <div className={styles.notFound}>
         <p>Такої історії не існує.</p>
-        <Link to="/tasks">Назад до списку історій</Link>
+        <Link to="/">Назад до списку історій</Link>
         </div>
     );
     }

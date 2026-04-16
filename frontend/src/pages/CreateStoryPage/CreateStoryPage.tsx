@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { CreateStoryDto } from "../../types/story";
 import styles from "./CreateStoryPage.module.css";
+import { characterApi } from "../../api/backendApi";
 
 interface CreateStoryPageProps {
   onAdd: (dto: CreateStoryDto) => Promise<void>;
@@ -34,25 +35,34 @@ export default function CreateStoryPage({ onAdd }: CreateStoryPageProps) {
   const selectedSetting = watch("charSetting");
 
   const onSubmit = async function(data: StoryFormData) {
-    const dto: CreateStoryDto = {
-      title: data.title,
-      character: {
-        name: data.charName,
-        age: Number(data.charAge),
-        gender: data.charGender,
-        setting: data.charSetting,
-        role: data.charRole,
-        description: data.charDescription, // Додали опис
-      }
+  try {
+    const characterDto = {
+      name: data.charName,
+      age: Number(data.charAge),
+      gender: data.charGender,
+      setting: data.charSetting,
+      role: data.charRole,
+      description: data.charDescription || ""
     };
 
-    try {
-      await onAdd(dto);
-      navigate("/");
-    } catch (e) {
-      alert("Помилка зв'язку з сервером");
-    }
-  };
+    //запит на створення персонажа
+    const savedCharacter = await characterApi.create(characterDto);
+    console.log("Персонаж створений з ID:", savedCharacter.id);
+
+    const storyDto: any = {
+      title: data.title,
+      characterId: savedCharacter.id
+    };
+
+    //запит на створення історії
+    await onAdd(storyDto); 
+    
+    navigate("/");
+  } catch (e) {
+    console.error(e);
+    alert("Сталася помилка на одному з етапів створення");
+  }
+};
 
   return (
     <div className={styles.container}>

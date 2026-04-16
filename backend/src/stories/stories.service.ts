@@ -3,16 +3,24 @@ import { CreateStoryDto } from './dto/create-story.dto';
 import { Story } from './entities/story.entity';
 import { Character } from '../characters/entities/character.entity';
 import { UpdateStoryDto } from './dto/update-story.dto';
+import { GeminiService } from './gemini.service';
 
 @Injectable()
 export class StoriesService {
   private stories: Story[] = [];
+  //конструктор геміні сервісу
+  constructor(private readonly geminiService: GeminiService) {}
 
-  create(createStoryDto: CreateStoryDto, character: Character) {
+  //асинхронний метод
+  async create(createStoryDto: CreateStoryDto, character: Character) {
+    
+    //виклик запиту на створення контенту
+    const aiContent = await this.geminiService.generateStory(createStoryDto.title, character );
+    
     const newStory: Story = {
       id: Date.now().toString(),
       title: createStoryDto.title,
-      content: "згенерована історія",
+      content: aiContent,
       character: character,
       createdAt: new Date(),
     };

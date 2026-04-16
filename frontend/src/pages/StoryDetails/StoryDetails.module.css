@@ -1,0 +1,113 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #252525;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ffcc00;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+  margin-bottom: 40px;
+  white-space: pre-wrap;
+}
+
+.content p {
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  border-top: 1px solid #444;
+  padding-top: 30px;
+}
+
+.actions button {
+  padding: 10px 25px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #444;
+  color: #fff;
+}
+
+.actions button:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+
+.deleteBtn {
+  background-color: #990000 !important;
+}
+
+.deleteBtn:hover {
+  background-color: #cc0000 !important;
+}
+
+.saveBtn {
+  background-color: #ffcc00 !important;
+  color: #000 !important;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editTitleInput {
+  font-size: 2rem;
+  padding: 10px;
+  background-color: #1a1a1a;
+  border: 1px solid #ffcc00;
+  color: #fff;
+  border-radius: 8px;
+  outline: none;
+}
+
+.editContentArea {
+  min-height: 400px;
+  font-size: 1.1rem;
+  padding: 15px;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  border-radius: 8px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.editContentArea:focus {
+  border-color: #ffcc00;
+}
+
+.notFound {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.notFound p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.notFound a {
+  color: #ffcc00;
+  text-decoration: none;
+  border-bottom: 1px dashed #ffcc00;
+}

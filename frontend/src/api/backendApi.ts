@@ -1,11 +1,23 @@
 import axios from "axios";
 import type { Story, CreateStoryDto } from "../types/story";
+import type { Character, CreateCharacterDto } from "../types/character";
 
 
 const api = axios.create({ baseURL: "http://localhost:3000"});
 
-export const storyApi = {
+export const characterApi = {
+  create: async function(dto: CreateCharacterDto) {
+    const response = await api.post<Character>("/characters", dto);
+    return response.data;
+  },
+  
+  getAll: async function() {
+    const response = await api.get<Character[]>("/characters");
+    return response.data;
+  }
+};
 
+export const storyApi = {
   getAll: async function() {
     const response = await api.get<Story[]>("/stories");
     return response.data;
