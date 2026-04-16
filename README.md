@@ -21,6 +21,8 @@
 * Стилізація: CSS Modules.
 
 ## Структура проекту
+
+```
 StoryGenerator/
 ├── backend/                              
 │   ├── dist/                             
@@ -88,6 +90,7 @@ StoryGenerator/
 │       └── main.tsx                      # Точка входу React
 │
 └── README.md                             # Документація проєкту
+```
 
 ## Основні сутності
 
