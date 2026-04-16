@@ -74,7 +74,12 @@ export default function CreateStoryPage({ onAdd }: CreateStoryPageProps) {
         <div className={styles.grid}>
 
           <input {...register("charName", { required: true })} placeholder="Ім'я героя" />
-          <input type="number" {...register("charAge")} placeholder="Вік" />
+          <input type="number" {...register("charAge", { 
+              required: "Вік обов'язковий", 
+              min: { value: 1, message: "Вік не може бути менше 1" }, 
+            })} 
+            placeholder="Вік" 
+          />
           
           <div className={styles.radioGroup}>
             <label>

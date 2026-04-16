@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import type { Story } from "../../types/story";
 import styles from "./StoryDetails.module.css";
 import { useState } from "react";
@@ -12,6 +12,8 @@ interface StoryDetailsProps {
 
 export default function TaskDetailPage({ stories, onUpdate, onDelete } : StoryDetailsProps) {
 
+    const navigate = useNavigate();
+    
     const { id } = useParams<{ id: string }>();
     
     const story = stories.find((story) => story.id === id);
@@ -69,7 +71,7 @@ export default function TaskDetailPage({ stories, onUpdate, onDelete } : StoryDe
           </div>
           <div className={styles.actions}>
             <button onClick={() => setIsEditing(true)}>Редагувати</button>
-            <button onClick={() => onDelete(story.id)} className={styles.deleteBtn}>Видалити</button>
+            <button onClick={() => {onDelete(story.id), navigate("/")}} className={styles.deleteBtn}>Видалити</button>
           </div>
         </>
       )}

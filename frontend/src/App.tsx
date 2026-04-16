@@ -29,8 +29,17 @@ export default function App() {
   };
 
 const handleUpdateStory = async function(updatedStory: Story) {
-  const savedStory = await storyApi.update(updatedStory.id, updatedStory);
-  setStories(stories.map(s => s.id === savedStory.id ? savedStory : s));
+  try {
+    const updateData = {
+      title: updatedStory.title,
+      content: updatedStory.content
+};
+    const savedStory = await storyApi.update(updatedStory.id, updateData);
+    setStories(stories.map(s => s.id === savedStory.id ? savedStory : s));
+  } catch (error) {
+    console.error("Помилка при оновленні історії:", error);
+    alert("Не вдалося зберегти зміни.");
+  }
 };
 
   if (isLoading) return <div>Завантаження</div>;
